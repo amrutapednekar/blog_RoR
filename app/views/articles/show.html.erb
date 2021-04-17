@@ -4,30 +4,8 @@
 <%= link_to "Edit article", edit_article_path(@article)%>
 <%= link_to "Delete article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %>
 
-<h2>Comments</h2>
-<%= @article.comments.each do |comment|%>
-    <p>
-    <strong>Commentor:</strong>
-    <%= comment.commentor %>
-  </p>
+<h2>Top Comments</h2>
+<%= render @article.comments%>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>    
-
-<h1> Your comments are preciois!</h1>
-<%= form_with model: [@article, @article.comments.build]  do |form| %>
-    <p>
-        <%= form.label :commentor%></br>
-        <%= form.text_field :commentor%></br>
-    </p>
-    <p>
-        <%= form.label :body%></br>
-        <%= form.text_area :body%></br>
-    </p>
-    <p>
-        <%= form.submit%>
-    </p>
-<% end %>    
+<h1> Your comments are precious!</h1>
+<%= render "comments/form"%>

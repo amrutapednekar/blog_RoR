@@ -1,9 +1,12 @@
-<h1>Hello, Rails! Articles</h1>
-<ul>
-    <% @articles.each do |article| %>
-        <li>     
-            <%= link_to article.title, article%>
-        </li>
-        <% end %>   
- </ul>
+<h1>Hello! Welcome to this Blog. </h1>
+<% unless @articles.nil?%>
+<h2>Top recoomented articles for you</h2>
+    <ul>
+        <% @articles.each do |article| %>
+            <li>     
+                <%= link_to article.title, article%>
+            </li>
+            <% end %>   
+    </ul>
+ <%end%>
  <%= link_to "Write new article", new_article_path%>
